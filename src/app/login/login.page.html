@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="title-container">
+    <ion-card class="login-card">
+      <ion-card-content>
+        <ion-icon name="person" class="user-icon"></ion-icon> 
+        <h1 class="app-title">Iniciar Sesión</h1>
+
+        <div class="input-container">
+          <ion-item *ngIf="!correoIngresado"> 
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input type="email" [(ngModel)]="correo" (ionBlur)="checkCorreo()" required></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="correoIngresado">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="password" required></ion-input>
+          </ion-item>
+        </div>
+
+        <ion-button class="login-button" (click)="login()" [disabled]="!correo || !correoIngresado">
+          Ingresar
+        </ion-button>
+
+        <div class="recover-password" *ngIf="correoIngresado"> 
+          <ion-label [routerLink]="['/recuperar']" class="forgot-password-label">
+            ¿Olvidaste tu contraseña?
+          </ion-label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

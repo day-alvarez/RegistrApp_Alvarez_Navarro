@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Curso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Curso</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event)" color="primary">
+    <ion-segment-button value="miEspacio">Mi Espacio</ion-segment-button>
+    <ion-segment-button value="editar">Editar</ion-segment-button>
+    <ion-segment-button value="matricula">Matrícula</ion-segment-button>
+    <ion-segment-button value="clases">Clases</ion-segment-button>
+    <ion-segment-button value="calendario">Calendario</ion-segment-button>
+    <ion-segment-button value="anuncios">Anuncios</ion-segment-button>
+  </ion-segment>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngIf="selectedSegment === 'miEspacio'"></ion-col>
+      <ion-col size="12" *ngIf="selectedSegment === 'editar'"></ion-col>
+      <ion-col size="12" *ngIf="selectedSegment === 'matricula'"></ion-col>
+      <ion-col size="12" *ngIf="selectedSegment === 'clases'">
+        <ion-button expand="full" (click)="nuevaClase()">
+          <ion-icon name="add"></ion-icon> Nueva Clase
+        </ion-button>
+        <ion-list>
+          <ion-item *ngFor="let clase of clases" style="margin-top: 10px;">
+            <ion-label>
+              <h2>ID: {{ clase.id }}</h2>
+              <h3>Día: {{ clase.dia }}</h3>
+              <h3>Fecha: {{ clase.fecha }}</h3>
+              <p>Cantidad: {{ clase.cantidad }}</p>
+            </ion-label>
+            <ion-buttons slot="end">
+              <ion-button (click)="verDetalles(clase)">
+                <ion-icon name="eye"></ion-icon>
+              </ion-button>
+              <ion-button (click)="generarQR(clase)">
+                <ion-icon name="qr-code"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </ion-list>
+        <div *ngIf="qrData" class="qr-container">
+          <qrcode [qrdata]="qrData"></qrcode>
+        </div>
+      </ion-col>
+      <ion-col size="12" *ngIf="selectedSegment === 'calendario'">
+        <ion-datetime presentation="date" [value]="currentDate" (ionChange)="dateChanged($event)"></ion-datetime>
+      </ion-col>
+      <ion-col size="12" *ngIf="selectedSegment === 'anuncios'"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
