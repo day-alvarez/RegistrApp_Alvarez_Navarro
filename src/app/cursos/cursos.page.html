@@ -5,21 +5,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-card *ngIf="curso">
-    <img [src]="curso.imagen" alt="{{ curso.nombre }}" />
+  <ion-card *ngIf="imagen">
+    <img [src]="imagen" alt="{{ nombre }}" />
     <ion-card-header>
-      <ion-card-title>{{ curso.nombre }}</ion-card-title>
+      <ion-card-title>{{ nombre }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>{{ curso.descripcion }}</p>
-      Botón para generar QR 
       <ion-button (click)="generarQR()">Generar QR</ion-button>
       <qrcode [qrdata]="qrData" [width]="200" *ngIf="qrData"></qrcode>
     </ion-card-content>
   </ion-card>
-  <ion-text *ngIf="!curso">Cargando curso...</ion-text> -->
-  <h3>{{ curso }}, {{nombre}}</h3>
-
-  <ion-button (click)="generarQR()">Generar QR</ion-button>
-  <qrcode [qrdata]="qrData" [width]="200" *ngIf="qrData"></qrcode>
+  <ion-text *ngIf="!imagen">Cargando curso...</ion-text>
 </ion-content>
