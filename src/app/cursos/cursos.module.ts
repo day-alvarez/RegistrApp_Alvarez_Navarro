@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { CursosPageRoutingModule } from './cursos-routing.module';
+import { QRCodeModule } from 'angularx-qrcode'; // Asegúrate de que esta línea esté presente
 
 import { CursosPage } from './cursos.page';
 
@@ -13,7 +14,9 @@ import { CursosPage } from './cursos.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CursosPageRoutingModule
+    CursosPageRoutingModule,
+    QRCodeModule // Asegúrate de que QRCodeModule esté aquí
+
   ],
   declarations: [CursosPage]
 })

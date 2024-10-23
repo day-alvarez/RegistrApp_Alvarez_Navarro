@@ -99,3 +99,16 @@ ion-datetime {
   border-radius: 16px;
   box-shadow: rgba(var(--ion-color-rose-rgb), 0.3) 0px 10px 15px -3px;
 }
+/* En home.page.scss o global.scss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0.5rem; /* Ajusta el padding para pantallas pequeñas */
+  }
+}

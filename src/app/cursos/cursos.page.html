@@ -1,24 +1,25 @@
-<ion-content class="ion-padding custom-content">
-  <h2 class="header-text">Cursos</h2>
-  
-  <div class="course-container">
-   
-    <ion-card class="custom-card">
-      <ion-card-header>
-        <ion-card-title class="card-title">Programación de Aplicaciones Móviles</ion-card-title>
-      </ion-card-header>
-      <ion-button color="secondary" expand="full" class="card-button" (click)="ingresarCurso('programacion')">Ingresar</ion-button>
-    </ion-card>
-    
-  
-    <ion-card class="custom-card">
-      <ion-card-header>
-        <ion-card-title class="card-title">Desarrollo Web</ion-card-title>
-      </ion-card-header>
-      <ion-button color="secondary" expand="full" class="card-button" (click)="ingresarCurso('web')">Ingresar</ion-button>
-    </ion-card>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalles del Curso</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  
-  </div>
-  
+<ion-content [fullscreen]="true">
+  <!-- <ion-card *ngIf="curso">
+    <img [src]="curso.imagen" alt="{{ curso.nombre }}" />
+    <ion-card-header>
+      <ion-card-title>{{ curso.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ curso.descripcion }}</p>
+      Botón para generar QR 
+      <ion-button (click)="generarQR()">Generar QR</ion-button>
+      <qrcode [qrdata]="qrData" [width]="200" *ngIf="qrData"></qrcode>
+    </ion-card-content>
+  </ion-card>
+  <ion-text *ngIf="!curso">Cargando curso...</ion-text> -->
+  <h3>{{ curso }}, {{nombre}}</h3>
+
+  <ion-button (click)="generarQR()">Generar QR</ion-button>
+  <qrcode [qrdata]="qrData" [width]="200" *ngIf="qrData"></qrcode>
 </ion-content>
